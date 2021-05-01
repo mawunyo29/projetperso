@@ -1,41 +1,34 @@
-.lateral_togger{
-    width: 80px;
-}
+
 /*Form fields*/
 .dataTables_wrapper select,
 .dataTables_wrapper .dataTables_filter input {
-    color: #4a5568; 			/*text-gray-700*/
-    padding-left: 1rem; 		/*pl-4*/
-    padding-right: 1rem; 		/*pl-4*/
-    padding-top: .5rem; 		/*pl-2*/
-    padding-bottom: .5rem; 		/*pl-2*/
-    line-height: 1.25; 			/*leading-tight*/
-    border-width: 2px; 			/*border-2*/
-    border-radius: .25rem; 		
-    border-color: #edf2f7; 		/*border-gray-200*/
-    background-color: #edf2f7; 	/*bg-gray-200*/
+
+    @apply bg-gray-200 border leading-tight border-gray-200 text-gray-700 pl-4 pr-4 pt-2 pb-2 rounded-md  flex-wrap my-5 mx-auto ;
 }
 
 /*Row Hover*/
 table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
     background-color: #ebf4ff;	/*bg-indigo-100*/
 }
+.dataTables_wrapper label{
 
+    @apply text-white space-x-3 font-bold py-3 shadow-lg p-2 rounded-md bg-pink-600;
+}
+.dataTables_wrapper label > :first ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(2 - var(--tw-space-x-reverse)));
+  }
 /*Pagination Buttons*/
 .dataTables_wrapper .dataTables_paginate .paginate_button		{
-    font-weight: 700;				/*font-bold*/
-    border-radius: .25rem;			/*rounded*/
-    border: 1px solid transparent;	/*border border-transparent*/
+   
+    @apply font-bold rounded border border-transparent;
 }
 
 /*Pagination Buttons - Current selected */
 .dataTables_wrapper .dataTables_paginate .paginate_button.current	{
-    color: #fff !important;				/*text-white*/
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06); 	/*shadow*/
-    font-weight: 700;					/*font-bold*/
-    border-radius: .25rem;				/*rounded*/
-    background: #667eea !important;		/*bg-indigo-500*/
-    border: 1px solid transparent;		/*border border-transparent*/
+  
+    @apply text-white shadow font-bold rounded bg-indigo-500 border;
 }
 
 /*Pagination Buttons - Hover */
@@ -57,5 +50,48 @@ table.dataTable.no-footer {
 
 /*Change colour of responsive icon*/
 table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
-    background-color: #667eea !important; /*bg-indigo-500*/
+    @apply bg-indigo-500; /*bg-indigo-500*/
+}
+.accordion {
+    @apply text-white cursor-pointer p-2  text-center transition ease-in duration-75 font-bold;
+    
+   
+   
+  }
+  
+  .active, .accordion:hover {
+    background-color: transparent;
+  }
+  
+  .accordion:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f107";
+    display: inline-block;
+    margin-left:1rem;
+    padding-right: 6px;
+    vertical-align: middle;
+    font-weight: 900;
+    color: rgb(107, 248, 107);
+    
+  }
+  
+  .active:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f106";
+    display: inline-block;
+    padding-right: 6px;
+    vertical-align: middle;
+    font-weight: 900;
+  }
+  
+  .panel {
+    
+   
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  .gradient {
+    background: linear-gradient(110deg, #1c09c7 0%, #4ca4f7 100%);
+
 }

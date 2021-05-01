@@ -1,124 +1,305 @@
-<x-app-layout class=" ">
+<div class="  mx-auto sm:px-6 lg:px-8 py-12 relative md:ml-20 bg-blueGray-50 " >
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg bg-auto bg-no-repeat bg-center"  @if($photo)
+    style="background-image: url({{$photo->temporaryUrl()}})"
+    @endif>
 
+        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+            <div>
+                <x-jet-application-logo class="block h-12 w-auto" />
+            </div>
 
+            <h1 class=" text-black font-bold text-4xl  text-center ">hello je vais créer mes articles ici!</h1>
 
-
-    <div class=" mx-auto sm:px-6 lg:px-8 py-12 container">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-                <div>
-                    <x-jet-application-logo class="block h-12 w-auto" />
-                </div>
-
-                <h1 class=" text-black font-bold text-4xl  text-center ">hello je vais créer mes articles ici!</h1>
-
-                <div class="mt-6 text-gray-500">
-
-                </div>
+            <div class="mt-6 text-gray-500">
 
             </div>
-            {{-- documentation  céer un code bar --}}
-            <div class="bg-gray-200 bg-opacity-25 border-b  border-indigo-500 ">
+
+        </div>
+        {{-- documentation  céer un code bar --}}
+        <div class="bg-gray-200 bg-opacity-25 border-b  border-indigo-500 ">
 
 
-                <div class=" p-5  ">
-                    <form action="" class="w-full">
-                        <div class=" my-5  grid grid-cols-8 gap-7  ">
-                            <div class=" col-span-2 ">
-                                <select name="category" id="">
-                                    <option value="0"> category</option>
-                                    <option value="1"> Informatique et burureau</option>
-                                    <option value="2"> Vêtement</option>
-                                    <option value="3"> Meuble</option>
-                                    <option value="1"> Electro ménager</option>
-                                    <option value="2"> Téléphonie</option>
-                                    <option value="3"> Meuble</option>
+            <div class=" p-5  " style="background:{{ $color }}">
+                <form action="" class="w-full ">
+                    <div class=" block my-5  lg:grid lg:grid-cols-8 lg:gap-7   ">
+                        <div class=" col-span-2 ">
+                            <select name="category" id="" class="my-3 w-full rounded-md shadow-lg">
+                                <option value="0"> category</option>
+                                <option value="1"> Informatique et burureau</option>
+                                <option value="2"> Vêtement</option>
+                                <option value="3"> Meuble</option>
+                                <option value="1"> Electro ménager</option>
+                                <option value="2"> Téléphonie</option>
+                                <option value="3"> Meuble</option>
 
-                                </select>
-                            </div>
-                            <div class="col-span-2">
-                                <select name="category" id="">
-                                    <option value="0"> sous category</option>
-                                    <option value="1"> télephone</option>
-                                    <option value="2"> ordinateur</option>
-                                    <option value="3"> Meuble télé</option>
-                                    <option value="1"> Seche linge</option>
-                                    <option value="2"> Télevision</option>
-                                    <option value="3"> Chaussette</option>
-
-                                </select>
-                            </div>
-
-                            <div class="col-span-2">
-                                <select name="Article" id="Article">
-                                    <option value="0"> Article</option>
-                                    <option value="1"> télephone</option>
-                                    <option value="2"> ordinateur</option>
-                                    <option value="3"> Meuble télé</option>
-                                    <option value="1"> Seche linge</option>
-                                    <option value="2"> Télevision</option>
-                                    <option value="3"> Chaussette</option>
-
-                                </select>
-                            </div>
-                            <div class="col-span-2">
-                                <select name="founisseur" id="founisseur">
-                                    <option value="0"> Founisseur</option>
-                                    <option value="1"> télephone</option>
-                                    <option value="2"> ordinateur</option>
-                                    <option value="3"> Meuble télé</option>
-                                    <option value="1"> Seche linge</option>
-                                    <option value="2"> Télevision</option>
-                                    <option value="3"> Chaussette</option>
-
-                                </select>
-                            </div>
-
-                            <div class="col-span-2">
-                                <label for="reference_article"></label>
-                                <input type="text" name="reference_article" id="reference_article"
-                                    placeholder="Réfence article">
-                                @error('reference_article')
-
-                                @enderror
-                            </div>
-                            <div class="col-span-2">
-                                <label for="color"></label>
-                                <input type="text" name="color" id="color" placeholder="Couleur">
-                                @error('color')
-
-                                @enderror
-                            </div>
-                            <div class="col-span-2">
-                                <label for="price"></label>
-                                <input type="text" name="price" id="price" placeholder="Prix">
-                                @error('price')
-
-                                @enderror
-                            </div>
-                            <div class="col-span-2">
-                                <label for="size"></label>
-                                <input type="text" name="size" id="size" placeholder="Taille">
-                                @error('Taille')
-
-                                @enderror
-                            </div>
+                            </select>
                         </div>
-                        <hr class=" w-full">
+                        <div class="col-span-2 ">
+                            <select name="category" id="" class="my-3 w-full rounded-md shadow-lg">
+                                <option value="0"> sous category</option>
+                                <option value="1"> télephone</option>
+                                <option value="2"> ordinateur</option>
+                                <option value="3"> Meuble télé</option>
+                                <option value="1"> Seche linge</option>
+                                <option value="2"> Télevision</option>
+                                <option value="3"> Chaussette</option>
 
-                    </form>
+                            </select>
+                        </div>
+
+                        <div class="col-span-2 ">
+                            <select name="Article" id="Article" class="my-3 w-full rounded-md shadow-lg">
+                                <option value="0"> Article</option>
+                                <option value="1"> télephone</option>
+                                <option value="2"> ordinateur</option>
+                                <option value="3"> Meuble télé</option>
+                                <option value="1"> Seche linge</option>
+                                <option value="2"> Télevision</option>
+                                <option value="3"> Chaussette</option>
+
+                            </select>
+                        </div>
+                        <div class="col-span-2 ">
+                            <select name="founisseur" id="founisseur" class="my-3 w-full rounded-md shadow-lg">
+                                <option value="0"> Founisseur</option>
+                                <option value="1"> télephone</option>
+                                <option value="2"> ordinateur</option>
+                                <option value="3"> Meuble télé</option>
+                                <option value="1"> Seche linge</option>
+                                <option value="2"> Télevision</option>
+                                <option value="3"> Chaussette</option>
+
+                            </select>
+                        </div>
+                        <div class="col-span-2 ">
+                            <select name="founisseur" id="founisseur" class="my-3 w-full rounded-md shadow-lg">
+                                <option value="0"> Founisseur</option>
+                                <option value="1"> télephone</option>
+                                <option value="2"> ordinateur</option>
+                                <option value="3"> Meuble télé</option>
+                                <option value="1"> Seche linge</option>
+                                <option value="2"> Télevision</option>
+                                <option value="3"> Chaussette</option>
+
+                            </select>
+                        </div>
+
+                        <div class="col-span-2">
+                            <label for="reference_article"></label>
+                            <input type="text" name="reference_article" id="reference_article"
+                                class="my-3 w-full rounded-md shadow-lg" placeholder="Réfence article">
+                            @error('reference_article')
+
+                            @enderror
+                        </div>
+                        <div class="col-span-2">
+                            <label for="color"></label>
+                            <input type="color" name="color" id="color" placeholder="Couleur"
+                                class="my-3 w-full rounded-md shadow-lg" wire:model.prevent="color">
+                            @error('color')
+
+                            @enderror
+                        </div>
+                        <div class="col-span-2">
+                            <label for="price"></label>
+                            <input type="text" name="price" id="price" placeholder="Prix"
+                                class="my-3 w-full rounded-md shadow-lg">
+                            @error('price')
+
+                            @enderror
+                        </div>
+                        <div class="col-span-2">
+                            <label for="size"></label>
+                            <input type="text" name="size" id="size" placeholder="Taille"
+                                class="my-3 w-full rounded-md shadow-lg">
+                            @error('Taille')
+
+                            @enderror
+                        </div>
+
+                    </div>
+                    <hr class=" w-full">
+
+                </form>
+            </div>
+
+            <form wire:submit.prevent="save" class="mx-3">
+                @if ($photo)
+                    Photo Preview:
+                    <img src="{{ $photo->temporaryUrl() }}">
+                @endif
+               
+                <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
+                    x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress " >
+                    <!-- File Input -->
+                    <div class=" cursor-pointer h-1/3  rounded-lg text-center  w-full p-16 border border-dashed text-base uppercase font-bold border-green-400 px-5 bg-gradient-to-r from-gray-100 via-blue-200 to-gray-200" @click="$refs.fileInput.click()"> Upload image</div>
+                    <input x-ref='fileInput' type="file" wire:model="photo" class=" hidden">
+                   
+                    <!-- Progress Bar -->
+                    <div x-show="isUploading"  >
+                        <progress max="100" x-bind:value="progress" ></progress>
+                    </div>
                 </div>
 
-                <div class=" my-5  mx-auto px-2">
+              
 
-                    <!--Title-->
-                    {{-- <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+                @error('photo') <span class="error">{{ $message }}</span> @enderror
+
+                <button type="submit">Save Photo</button>
+            </form>
+            <div class=" my-5  p-2 w-full">
+
+                <!--Title-->
+                {{-- <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
                             Responsive <a class="underline mx-2" href="https://datatables.net/">DataTables.net</a> Table
                         </h1> --}}
 
 
-                    <!--Card-->
-                    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+                <!--Card-->
+                <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
+                    <div class="px-4 md:px-10 mx-auto w-full">
+                        <div>
+                            <!-- Card stats -->
+                            <div class="flex flex-wrap">
+                                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                                    <div
+                                        class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                        <div class="flex-auto p-4">
+                                            <div class="flex flex-wrap">
+                                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                                                        Traffic
+                                                    </h5>
+                                                    <span class="font-semibold text-xl text-blueGray-700">
+                                                        350,897
+                                                    </span>
+                                                </div>
+                                                <div class="relative w-auto pl-4 flex-initial">
+                                                    <div
+                                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
+                                                        <i class="far fa-chart-bar"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm text-blueGray-400 mt-4">
+                                                <span class="text-emerald-500 mr-2">
+                                                    <i class="fas fa-arrow-up"></i> 3.48%
+                                                </span>
+                                                <span class="whitespace-nowrap">
+                                                    Since last month
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                                    <div
+                                        class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                        <div class="flex-auto p-4">
+                                            <div class="flex flex-wrap">
+                                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                                                        New users
+                                                    </h5>
+                                                    <span class="font-semibold text-xl text-blueGray-700">
+                                                        2,356
+                                                    </span>
+                                                </div>
+                                                <div class="relative w-auto pl-4 flex-initial">
+                                                    <div
+                                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
+                                                        <i class="fas fa-chart-pie"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm text-blueGray-400 mt-4">
+                                                <span class="text-red-500 mr-2">
+                                                    <i class="fas fa-arrow-down"></i> 3.48%
+                                                </span>
+                                                <span class="whitespace-nowrap"> Since last week </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                                    <div
+                                        class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                        <div class="flex-auto p-4">
+                                            <div class="flex flex-wrap">
+                                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                                                        Sales
+                                                    </h5>
+                                                    <span class="font-semibold text-xl text-blueGray-700">
+                                                        924
+                                                    </span>
+                                                </div>
+                                                <div class="relative w-auto pl-4 flex-initial">
+                                                    <div
+                                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
+                                                        <i class="fas fa-users"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm text-blueGray-400 mt-4">
+                                                <span class="text-orange-500 mr-2">
+                                                    <i class="fas fa-arrow-down"></i> 1.10%
+                                                </span>
+                                                <span class="whitespace-nowrap"> Since yesterday </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+                                    <div
+                                        class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+                                        <div class="flex-auto p-4">
+                                            <div class="flex flex-wrap">
+                                                <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                                                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                                                        Performance
+                                                    </h5>
+                                                    <span class="font-semibold text-xl text-blueGray-700">
+                                                        49,65%
+                                                    </span>
+                                                </div>
+                                                <div class="relative w-auto pl-4 flex-initial">
+                                                    <div
+                                                        class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-lightBlue-500">
+                                                        <i class="fas fa-percent"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm text-blueGray-400 mt-4">
+                                                <span class="text-emerald-500 mr-2">
+                                                    <i class="fas fa-arrow-up"></i> 12%
+                                                </span>
+                                                <span class="whitespace-nowrap">
+                                                    Since last month
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="w-full bg-pink-600 border-collapse my-4">
+                <div class="my-5">
+                    <div class=" md:overflow-x-hidden ">
+                        <livewire:datatable id="example2" model="App\Models\User"
+                            include="id, name|Nom, email,profile_photo_path, created_at|Date de création"
+                            hideable="select" dates="created_at|d-m-Y" searchable="name, email" sort="id|asc"
+                            exportable />
+
+                    </div>
+                </div>
+                <hr class="w-full bg-pink-600 border-collapse my-4">
+
+
+                {{-- <div id='recipients' class=" p-2 mt-6 lg:mt-0 rounded shadow-lg my-5 bg-white pt-10">
 
 
                         <table id="example" class="stripe hover w-full"
@@ -158,27 +339,27 @@
                         </table>
 
 
-                    </div>
-                    <!--/Card-->
+                    </div> --}}
+                <!--/Card-->
 
 
-                </div>
             </div>
-
         </div>
 
-
-        <!--/container-->
-
+    </div>
 
 
+    <!--/container-->
 
 
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-        <!--Datatables -->
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+
+    <!-- jQuery -->
+    {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
+
+    <!--Datatables -->
+    {{-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -190,9 +371,55 @@
                     .responsive.recalc();
             });
 
-        </script>
+        </script> --}}
+
+</div>
+<div class="mx-auto sm:px-6 lg:px-8 py-12 relative md:ml-20 bg-blueGray-50 ">
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+            <div>
+                <x-jet-application-logo class="block h-12 w-auto" />
+            </div>
+
+            <h1 class=" text-black font-bold text-4xl  text-center ">hello je vais créer mes articles ici!</h1>
+
+            <div class="mt-6 text-gray-500">
+
+            </div>
+
+        </div>
+        {{-- documentation  céer un code bar --}}
+        <div class="bg-gray-200 bg-opacity-25 border-b  border-indigo-500 ">
+
+
+            <div class=" p-5  ">
+
+            </div>
+
+            <div class=" my-5  p-2 w-full">
+
+                <!--Title-->
+                {{-- <h1 class="flex items-center font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
+                            Responsive <a class="underline mx-2" href="https://datatables.net/">DataTables.net</a> Table
+                        </h1> --}}
+
+
+                <!--Card-->
+
+                <!--/Card-->
+
+
+            </div>
+        </div>
 
     </div>
 
 
-</x-app-layout>
+    <!--/container-->
+
+
+
+
+
+
+</div>

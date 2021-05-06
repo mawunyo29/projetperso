@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Articles;
 
+use App\Models\Article;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-
+use Illuminate\Support\Str;
 class CreateArticle extends Component
 {
     use WithFileUploads;
@@ -14,10 +16,12 @@ class CreateArticle extends Component
     public $marque;
     public $idy;
     public $photo;
+    public ?Article $article;
 
     public function render()
     {
-        return view('livewire.articles.create-article');
+        $articles = Article::all();
+        return view('livewire.articles.create-article', compact('articles'));
     }
  
 
@@ -29,6 +33,14 @@ class CreateArticle extends Component
             'photo' => 'image|max:1024', // 1MB Max
         ]);
         
-        $this->photo->storePublicly('photos');
+        $this->photo->storePubliclyAs('photos', 'avatar', 's3');
     }
+
+ 
+    public function createArticle(){
+
+      
+    }
+
+    
 }

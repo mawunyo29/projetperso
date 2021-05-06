@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->integer('quantity_alert')->default(10);
             $table->string('image')->nullable();
             $table->text('description');
+            $table->foreignId('souscategory_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

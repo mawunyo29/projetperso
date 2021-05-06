@@ -1,9 +1,7 @@
-<div class="  mx-auto sm:px-6 lg:px-8 py-12 relative md:ml-20 bg-blueGray-50 " >
-    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg bg-auto bg-no-repeat bg-center"  @if($photo)
-    style="background-image: url({{$photo->temporaryUrl()}})"
-    @endif>
+<div class="  mx-auto sm:px-6 lg:px-8 py-12 relative md:ml-20 bg-blueGray-50 ">
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg bg-auto bg-no-repeat bg-center">
 
-        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+        <div class="p-6 sm:px-20 bg-white  border-b border-gray-200" style="background:{{ $color }}">
             <div>
                 <x-jet-application-logo class="block h-12 w-auto" />
             </div>
@@ -16,12 +14,15 @@
 
         </div>
         {{-- documentation  céer un code bar --}}
-        <div class="bg-gray-200 bg-opacity-25 border-b  border-indigo-500 ">
-
-
-            <div class=" p-5  " style="background:{{ $color }}">
-                <form action="" class="w-full ">
-                    <div class=" block my-5  lg:grid lg:grid-cols-8 lg:gap-7   ">
+        <div class="bg-gray-200 bg-opacity-25 border-b p items-center border-indigo-500 ">
+ <div class=" float-right mr-6">
+    <button id='multiInputbtn' class=" rounded-lg no-underline focus:outline-none focus:border-transparent  appearance-none leading-normal hover:text-gray-800 hover:text-underline py-2 px-4 bg-green-400"><i class="fas fa-plus"></i> ajouter </button>
+    <button id='removebtn' class=" rounded-lg no-underline focus:outline-none focus:border-transparent  appearance-none leading-normal hover:text-gray-800 hover:text-underline py-2 px-4 bg-green-400"><i class="fas fa-minus"></i> annuler </button>
+ </div>
+            
+            <form action="" class="w-full " clientForm id="formmultiple">
+                <div class=" p-5 my-2 border-l-8 box-border border-collapse border-blue-500 " myInputDiv id='myInputDiv'>
+                    <div class=" block my-5  lg:grid lg:grid-cols-8 lg:gap-7 myInputDiv">
                         <div class=" col-span-2 ">
                             <select name="category" id="" class="my-3 w-full rounded-md shadow-lg">
                                 <option value="0"> category</option>
@@ -62,18 +63,18 @@
                         <div class="col-span-2 ">
                             <select name="founisseur" id="founisseur" class="my-3 w-full rounded-md shadow-lg">
                                 <option value="0"> Founisseur</option>
-                                <option value="1"> télephone</option>
-                                <option value="2"> ordinateur</option>
-                                <option value="3"> Meuble télé</option>
-                                <option value="1"> Seche linge</option>
-                                <option value="2"> Télevision</option>
-                                <option value="3"> Chaussette</option>
+                                <option value="1"> Dglogi</option>
+                                <option value="2"> Monotel</option>
+                                <option value="3"> Samsung</option>
+                                <option value="1"> Texsoc</option>
+                                <option value="2"> Mgsocieté</option>
+                                <option value="3"> Grag</option>
 
                             </select>
                         </div>
                         <div class="col-span-2 ">
-                            <select name="founisseur" id="founisseur" class="my-3 w-full rounded-md shadow-lg">
-                                <option value="0"> Founisseur</option>
+                            <select name="refrence" id="refrence" class="my-3 w-full rounded-md shadow-lg">
+                                <option value="0"> Reference</option>
                                 <option value="1"> télephone</option>
                                 <option value="2"> ordinateur</option>
                                 <option value="3"> Meuble télé</option>
@@ -116,38 +117,59 @@
 
                             @enderror
                         </div>
+                        <div class="col-span-2">
+                            <label for="weight"></label>
+                            <input type="text" name="weight" id="weight" placeholder="Poids"
+                                class="my-3 w-full rounded-md shadow-lg">
+                            @error('Taille')
+
+                            @enderror
+                        </div>
 
                     </div>
                     <hr class=" w-full">
+                </div>
+            </form>
 
-                </form>
-            </div>
 
-            <form wire:submit.prevent="save" class="mx-3">
-                @if ($photo)
-                    Photo Preview:
-                    <img src="{{ $photo->temporaryUrl() }}">
-                @endif
-               
+            <form wire:submit.prevent="save" class="p-3  my-3">
+
+
+
                 <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                     x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"
-                    x-on:livewire-upload-progress="progress = $event.detail.progress " >
+                    x-on:livewire-upload-progress="progress = $event.detail.progress ">
                     <!-- File Input -->
-                    <div class=" cursor-pointer h-1/3  rounded-lg text-center  w-full p-16 border border-dashed text-base uppercase font-bold border-green-400 px-5 bg-gradient-to-r from-gray-100 via-blue-200 to-gray-200" @click="$refs.fileInput.click()"> Upload image</div>
-                    <input x-ref='fileInput' type="file" wire:model="photo" class=" hidden">
-                   
+                    <div class=" cursor-pointer h-1/3  rounded-lg text-center block  w-full p-16 border border-dashed text-base uppercase font-bold border-green-400 px-5 bg-gradient-to-r from-gray-100 via-blue-200 to-gray-200"
+                        @click="$refs.fileInput.click()">
+                        <h2>Upload image</h2>
+                        <i class="fas fa-upload font-extrabold text-green-400 md:text-3xl flex-wrap"></i>
+                    </div>
+                    <input x-ref='fileInput' type="file" wire:model="photos" class=" hidden" multiple>
+
                     <!-- Progress Bar -->
-                    <div x-show="isUploading"  >
-                        <progress max="100" x-bind:value="progress" ></progress>
+                    <div x-show="isUploading">
+                        <progress max="100" x-bind:value="progress"></progress>
                     </div>
                 </div>
 
-              
 
-                @error('photo') <span class="error">{{ $message }}</span> @enderror
 
-                <button type="submit">Save Photo</button>
+                @error('photos.*') <span class="error">{{ $message }}</span> @enderror
+                @if ($photos)
+
+                    Photo Preview:
+                    @foreach ($photos as $photo)
+
+                        <img src="{{ $photo->temporaryUrl() }}">
+                        {{ $photo->getClientOriginalName() }}
+                    @endforeach
+                    <button type="submit" class=" py-2 px-8 rounded-lg items-end my-5 bg-green-400">Save Photo</button>
+                @endif
+
             </form>
+
+
             <div class=" my-5  p-2 w-full">
 
                 <!--Title-->
@@ -296,8 +318,21 @@
 
                     </div>
                 </div>
-                <hr class="w-full bg-pink-600 border-collapse my-4">
+                <hr class="w-full border-pink-600 border-collapse my-4">
 
+                <div class="my-5 shadow-lg  border-gray-500">
+                    <h2 class=" text-center uppercase font-bold my-2">Etat des articles</h2>
+                    <div class=" md:overflow-x-hidden ">
+                        <livewire:datatable id="produit" model="App\Models\Article"
+                            include="id, name|Nom, price|prix, weight|poids, quantity|quantité ,quantity_alert|seuil, created_at|Date de création"
+                            hideable="select" dates="created_at|d-m-Y" searchable="name,price" sort="id|asc"
+                            exportable />
+
+                    </div>
+                </div>
+
+
+                <hr class="w-full bg-pink-600 border-collapse my-4">
 
                 {{-- <div id='recipients' class=" p-2 mt-6 lg:mt-0 rounded shadow-lg my-5 bg-white pt-10">
 

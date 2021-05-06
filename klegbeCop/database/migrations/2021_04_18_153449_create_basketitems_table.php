@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSouscategoriesTable extends Migration
+class CreateBasketitemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateSouscategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('souscategories', function (Blueprint $table) {
+        Schema::create('basketitems', function (Blueprint $table) {
             $table->id();
-            $table->string('slug', 50);
             $table->timestamps();
             $table->string('name');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->integer('quantity');
+            $table->decimal('total_price');
+            $table->unsignedBigInteger('article_id');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });
     }
 
@@ -29,6 +31,6 @@ class CreateSouscategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('souscategories');
+        Schema::dropIfExists('basketitems');
     }
 }

@@ -17,6 +17,7 @@ class CreateLivraisonsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->decimal('price');
+            $table->string('name');
             $table->foreignId('country_id')->constrained()->onDelete('cascade');
             $table->foreignId('range_id')->constrained()->onDelete('cascade');
         });

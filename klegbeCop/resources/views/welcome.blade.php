@@ -12,6 +12,7 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
     <!--Replace with your tailwind.css once created-->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="{{ mix('css/coustom.css') }}">
    
     <script src="{{ mix('js/app.js') }}" defer></script>
+    
     
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
@@ -103,26 +105,65 @@
                         <a class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
                             href="#title" :active="link2">link2</a>
                     </li>
-                    <li class="mr-3  "   >
+                    <li class="mr-3">
+                        <a class="inline-block py-2 px-4  font-bold no-underline" href="/"
+                            :active="true">categorie</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                            href="#action ">link</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                            href="#title" :active="link2"><i class="fas fa-cart-arrow-down mr-1"></i>Panier</a>
+                    </li>
+                    <li class="mr-3  dropdown"   >
+                        <button onclick="myFunction()" class="dropbtn no-underline focus:outline-none focus:border-transparent  appearance-none leading-normal hover:text-gray-800 hover:text-underline py-2 px-4"><i class="far fa-user mr-1"></i>Compte et liste</button>
+                    <div id="myDropdown" class="dropdown-content">
                         @if (Route::has('login'))
 
-                            @auth
-                                <a href="{{ url('/dashboard') }}"
-                                    class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Dashboard</a>
-                            @else
-                                <a href="{{ route('login') }}" :active="true"
-                                    class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Log
-                                    in</a>
+                        @auth
+                            <a href="{{ url('/dashboard') }}"
+                                class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" :active="true"
+                                class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Log
+                                in</a>
 
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" :active="true"
-                                        class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Register</a>
-                                @endif
-                            @endauth
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" :active="true"
+                                    class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Register</a>
+                            @endif
+                        @endauth
 
-                        @endif
+                    @endif
+                    </div>
                     </li>
                 </ul>
+                
+<script>
+    
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+        
+</script>
                 {{-- <button
             id="navAction"
             class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
@@ -131,6 +172,8 @@
           </button> --}}
             </div>
         </div>
+
+       
         {{-- serach bar --}}
 
         <div class="relative w-full hidden  bg-white  shadow-2xl ring-1 border-t  border-collapse border-gray-400"
@@ -165,17 +208,18 @@
 
         </div>
         <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+      
     </nav>
-  
-    {{-- @yield('name') --}}
+   
+    {{-- @yield('header') --}}
     
-
+   
     <!--Hero-->
     <div class="pt-24 right-0 left-0">
 
         <div class="container  mx-auto flex flex-wrap flex-col md:flex-row items-center">
             <!--Left Col-->
-            <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center p-2 md:text-left">
+            {{-- <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center p-2 md:text-left">
                 <p class="uppercase tracking-loose w-full">What business are you?</p>
                 <h1 class="my-4 text-5xl font-bold leading-tight">
                     Main Hero Message to sell yourself!
@@ -187,7 +231,7 @@
                     class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                     Subscribe
                 </button>
-            </div>
+            </div> --}}
            
             <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
                 id="large-modal-id">
@@ -220,6 +264,7 @@
                                 won’t do anything. I was taught I could do everything.
                             </p>
                         </div>
+                        
                         <!--footer-->
                         <div
                             class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -247,10 +292,13 @@
                 }
 
             </script>
-
+ 
             <!--Right Col-->
 
         </div>
+        <div class="my-12   contents bg-cover ">
+            <img class="w-full h-1/6" src=" images/coding.jpg" alt="" style="height:600px">
+         </div>
     </div>
     {{-- <div class="relative -mt-12 lg:-mt-24">
 
@@ -270,21 +318,8 @@
            
             <div class="flex flex-wrap items-center justify-evenly">
 
-             <x-forms.input name='Madame' type=' IdeaPad-3i-Ordinateur-Portable-17.3' label='699.99€' marque='Lenovo' ></x-forms.input>
-             <x-forms.input name='informatique' type='Monsieur' label='799.99€' marque='HP'></x-forms.input>
-             <x-forms.input name='informatique' type='ASUS Vivobook S S433IA-HM849T PC Portable 14-14.9 FHD' label='699.99€' marque='ASUS'></x-forms.input>
-             <x-forms.input name='informatique' type='Acer Chromebook CB315-3H-P014 Ordinateur Portable 15.6"' label='799.99€' marque='Accer'></x-forms.input>
-             <x-forms.input name='informatique' type='Samsung Chromebook 4+ - Laptop 64GB' label='699.99€' marque='Samsung' ></x-forms.input>
-             <x-forms.input name='informatique' type='CHUWI GemiBook Ordinateur Portable Ultrabook 13 Pouces' label='799.99€' marque='CHUWI'></x-forms.input>
-             <x-forms.input name='informatique' type='Dell Inspiron 17 2-en-1 7791 Ordinateur Portable Tactile' label='699.99€' marque='Dell'></x-forms.input>
-             <x-forms.input name='informatique' type='HSW 10.1" Windows 10 Ultra Thin Ordinateur Portable PC' label='799.99€' marque='HSW'></x-forms.input>
-             <x-forms.input name='informatique' type='Thin Ordinateur' label='699.99€' marque='samgsun' ></x-forms.input>
-             <x-forms.input name='informatique' type='Ordinateur A' label='799.99€' marque='HP'></x-forms.input>
-             <x-forms.input name='informatique' type='Ordinateur B' label='699.99€' marque='ASUS'></x-forms.input>
-             <x-forms.input name='informatique' type='Ordinateur C' label='799.99€' marque='ACCER'></x-forms.input>
-             <x-forms.input name='informatique' type='Ordinateur D' label='799.99€' marque='ACCER'></x-forms.input>
-             <x-forms.input name='informatique' type='Ordinateur E' label='799.99€' marque='ACCER'></x-forms.input>
-             <x-forms.input name='informatique' type='Ordinateur F' label='799.99€' marque='ACCER'></x-forms.input>
+             <x-forms.input name type=' IdeaPad-3i-Ordinateur-Portable-17.3' label marque='Lenovo' ></x-forms.input>
+             
                
             </div>
         </div>

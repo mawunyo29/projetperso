@@ -16,7 +16,6 @@ class CreateOrderProductsTable extends Migration
         Schema::create('order_products', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->id();
             $table->string('name');
             $table->decimal('total_price_gross');
             $table->integer('quantity');

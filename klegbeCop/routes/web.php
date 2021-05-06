@@ -31,8 +31,8 @@ Route::post('articles', function(){
 })->name('article-create');
 
 Route::get('articles.all-articles',App\Http\Livewire\Articles\AllArticles::class )->name('add_article');
-Route::get('forms.card-produit/{type}/{name}/{label}/{marque}',function($name ,$type, $label, $marque){
-    $type =$type;
-    $name = $name; $label =$label; $marque =$marque;
-    return view('components.forms.card-produit',compact('type', 'name', 'label', 'marque'));
+Route::get('forms.card-produit/{article}',function(Article $article ){
+    $article =$article;
+  
+    return view('components.forms.card-produit',compact('article'));
 } )->name('produit');

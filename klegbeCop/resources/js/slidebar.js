@@ -1,10 +1,17 @@
+const { remove } = require("lodash")
+
 var mybutton = document.getElementById("mybtn-togger")
 var mytogger = document.getElementById("mylateral_navbar")
 var mynavcolor =document.getElementById('navcolor')
 var nav_items = document.getElementById('nav_items')
 
 mytogger.getAttribute("navlateral","false")
- 
+mytogger.classList.toggle('md:w-20')
+mytogger.classList.toggle('md:z-50')
+
+mytogger.classList.toggle('flex')
+
+
 mybutton.onclick =click
  function click(){
     mynavcolor.getAttribute('navcolor')
@@ -17,7 +24,8 @@ mybutton.onclick =click
       
        
         mynavcolor.removeAttribute("navcolor")
-        mytogger.classList.toggle("w-64")
+        mytogger.classList.toggle("md:w-64")
+       
         mynavcolor.classList.remove('text-indigo-300')
         mynavcolor.classList.add('text-white')
         mytogger.classList.remove("bg-white")
@@ -26,8 +34,8 @@ mybutton.onclick =click
     }
     
     else{
-        mytogger.style.removeProperty("width")
-        mytogger.classList.add('w-20')
+        mytogger.classList.remove('md:w-64')
+      
         nav_items.classList.add('hidden')
         mytogger.setAttribute( "navlateral","true")
         mybutton.classList.remove("hidden")
@@ -36,22 +44,45 @@ mybutton.onclick =click
         mynavcolor.classList.add('text-indigo-300')
     }
 }
-function myFunction(x) {
-    if (x.matches) { // If media query matches
-        mytogger.classList.add('w-full')
 
-        mytogger.setAttribute( "navlateral","true")
-        mybutton.classList.remove("hidden")
-        mytogger.style.removeProperty("background-color")
-        mytogger.classList.add("bg-white")
-        mynavcolor.classList.add('text-indigo-300')
-    } else {
-        mytogger.classList.remove('w-full')
-        mytogger.classList.toggle('w-20')
-      
-    }
-  }
+/**
+ * creat dinamic multiple input  when click on button
+ * 
+ *  */
+var multiInputbtn = document.getElementById('multiInputbtn')
+
+ 
+var formmultiple = document.getElementById('formmultiple')
+   
+    var i= 0
+multiInputbtn.onclick= addElem
+ function addElem(){
+    var myInputDiv =document.getElementById('myInputDiv')
+    myInputDiv.classList.remove('hidden')
+     i++
+    
+ 
   
-  var x = window.matchMedia("(max-width: 768px)")
-  myFunction(x) // Call listener function at run time
-  x.addListener(myFunction) // Attach listener function on state changes
+   myInputDiv.getAttribute('myInputDiv')
+  var otherDiv= myInputDiv.cloneNode(true)
+  
+  otherDiv.setAttribute('id','myInputDiv'+i)
+    formmultiple.appendChild(otherDiv)
+    
+    
+
+ }
+/**
+ * remove form input
+ */
+
+ var removebtn =document.getElementById('removebtn')
+ removebtn.onclick = remov
+
+ function remov(){
+ if (document.getElementById('myInputDiv'+i)) {
+     i--
+    formmultiple.lastChild.remove()
+ }
+    
+ }

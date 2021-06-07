@@ -53,11 +53,17 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
     @apply bg-indigo-500; /*bg-indigo-500*/
 }
 .accordion {
-    @apply text-white cursor-pointer p-2  text-center transition ease-in duration-75 font-bold;
-    
-   
-   
-  }
+ 
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
   
   .active, .accordion:hover {
     background-color: transparent;
@@ -85,12 +91,14 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataT
   }
   
   .panel {
-    
-   
-    max-height: 0;
+    padding: 0 18px;
+    display: none;
+    background-color: white;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
   }
+ 
+  
   .gradient {
     background: linear-gradient(110deg, #1c09c7 0%, #4ca4f7 100%);
 

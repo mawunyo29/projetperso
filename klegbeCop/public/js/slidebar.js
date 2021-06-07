@@ -17314,18 +17314,46 @@ function click() {
 
 
 var multiInputbtn = document.getElementById('multiInputbtn');
+var myfre = document.getElementById("x-ref");
 var formmultiple = document.getElementById('formmultiple');
 var i = 0;
-multiInputbtn.onclick = addElem;
 
-function addElem() {
-  var myInputDiv = document.getElementById('myInputDiv');
+if (multiInputbtn != null) {
+  multiInputbtn.onclick = addElem;
+}
+
+var myInputDiv = document.getElementById('myInputDiv');
+var imageUpload = document.getElementById('imageUpload');
+
+function addElem(e) {
   myInputDiv.classList.remove('hidden');
-  i++;
   myInputDiv.getAttribute('myInputDiv');
   var otherDiv = myInputDiv.cloneNode(true);
   otherDiv.setAttribute('id', 'myInputDiv' + i);
+
+  if (myInputDiv.classList.toggle("border-blue-500")) {
+    otherDiv.classList.remove("border-blue-500");
+    otherDiv.classList.add("border-green-500");
+  }
+
+  imageUpload.setAttribute('id', 'imageUpload' + i);
+  myfre.setAttribute("id", 'x-ref' + i);
   formmultiple.appendChild(otherDiv);
+  i++;
+  e.preventDefault();
+}
+
+var clikdiv = document.getElementById('imageUpload' + i);
+
+if (clikdiv != null) {
+  clikdiv.forEach(function (element) {
+    console.log(element);
+    element.onclick = clickmydiv;
+
+    function clickmydiv() {
+      document.getElementById('x-ref' + i).click();
+    }
+  });
 }
 /**
  * remove form input
@@ -17333,13 +17361,38 @@ function addElem() {
 
 
 var removebtn = document.getElementById('removebtn');
-removebtn.onclick = remov;
 
-function remov() {
+if (removebtn != null) {
+  removebtn.onclick = remov;
+}
+
+function remov(e) {
   if (document.getElementById('myInputDiv' + i)) {
     i--;
     formmultiple.lastChild.remove();
   }
+
+  e.preventDefault();
+}
+/**
+ * accordion
+ */
+
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function () {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
 }
 })();
 

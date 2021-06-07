@@ -15,13 +15,13 @@
         </div>
         {{-- documentation  céer un code bar --}}
         <div class="bg-gray-200 bg-opacity-25 border-b p items-center border-indigo-500 ">
- <div class=" float-right mr-6">
+ <div class=" float-right mr-6 p-2">
     <button id='multiInputbtn' class=" rounded-lg no-underline focus:outline-none focus:border-transparent  appearance-none leading-normal hover:text-gray-800 hover:text-underline py-2 px-4 bg-green-400"><i class="fas fa-plus"></i> ajouter </button>
     <button id='removebtn' class=" rounded-lg no-underline focus:outline-none focus:border-transparent  appearance-none leading-normal hover:text-gray-800 hover:text-underline py-2 px-4 bg-green-400"><i class="fas fa-minus"></i> annuler </button>
  </div>
             
-            <form action="" class="w-full " clientForm id="formmultiple">
-                <div class=" p-5 my-2 border-l-8 box-border border-collapse border-blue-500 " myInputDiv id='myInputDiv'>
+            <form wire:submit.prevent="save" class="w-full " clientForm id="formmultiple">
+                <div class=" p-5 my-5 border-l-8 border-r-8 box-border border-collapse border-blue-500 rounded-lg " myInputDiv id='myInputDiv'>
                     <div class=" block my-5  lg:grid lg:grid-cols-8 lg:gap-7 myInputDiv">
                         <div class=" col-span-2 ">
                             <select name="category" id="" class="my-3 w-full rounded-md shadow-lg">
@@ -127,25 +127,22 @@
                         </div>
 
                     </div>
-                    <hr class=" w-full">
-                </div>
-            </form>
-
-
-            <form wire:submit.prevent="save" class="p-3  my-3">
+                    <hr class=" w-full my-2">
+               
+             
 
 
 
                 <div x-data="{ isUploading: false, progress: 0 }" x-on:livewire-upload-start="isUploading = true"
                     x-on:livewire-upload-finish="isUploading = false" x-on:livewire-upload-error="isUploading = false"
-                    x-on:livewire-upload-progress="progress = $event.detail.progress ">
+                    x-on:livewire-upload-progress="progress = $event.detail.progress " >
                     <!-- File Input -->
-                    <div class=" cursor-pointer h-1/3  rounded-lg text-center block  w-full p-16 border border-dashed text-base uppercase font-bold border-green-400 px-5 bg-gradient-to-r from-gray-100 via-blue-200 to-gray-200"
-                        @click="$refs.fileInput.click()">
+                    <div class=" cursor-pointer h-1/3 my-5 rounded-lg text-center block  w-full p-16 border border-dashed text-base uppercase font-bold border-green-400 px-5 bg-gradient-to-r from-gray-100 via-blue-200 to-gray-200"
+                        id="imageUpload">
                         <h2>Upload image</h2>
                         <i class="fas fa-upload font-extrabold text-green-400 md:text-3xl flex-wrap"></i>
                     </div>
-                    <input x-ref='fileInput' type="file" wire:model="photos" class=" hidden" multiple>
+                    <input   type="file" wire:model="photos" class=" hidden"  id="x-ref">
 
                     <!-- Progress Bar -->
                     <div x-show="isUploading">
@@ -156,17 +153,23 @@
 
 
                 @error('photos.*') <span class="error">{{ $message }}</span> @enderror
-                @if ($photos)
+              
+                <hr class=" w-full my-2">
+            </div>
+            @if ($photos)
 
-                    Photo Preview:
-                    @foreach ($photos as $photo)
-
-                        <img src="{{ $photo->temporaryUrl() }}">
-                        {{ $photo->getClientOriginalName() }}
-                    @endforeach
-                    <button type="submit" class=" py-2 px-8 rounded-lg items-end my-5 bg-green-400">Save Photo</button>
-                @endif
-
+            Photo Preview:
+            @foreach ($photos as $photo)
+            <div class=" container mx-auto items-center" wire:key="{{$loop->index}}">
+                <i class="far fa-times-circle float-right cursor-pointer" wire:click="removePhoto({{$loop->index}})"></i>
+            <div class=" flex justify-center  "> <img src="{{ $photo->temporaryUrl() }}" width="250"></div>
+            </div>
+            
+                {{ $photo->getClientOriginalName() }}
+                
+            @endforeach
+            <button type="submit" class=" py-2 px-8 rounded-lg items-end my-5 bg-green-400">Save Photo</button>
+        @endif
             </form>
 
 

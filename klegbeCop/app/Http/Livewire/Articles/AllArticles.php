@@ -16,8 +16,10 @@ class AllArticles extends Component
     public ?Article $article;
     public $users;
     public $photos= [];
-    public function mount($color = null)
+    public $myInputDiv ="inputForm";
+    public function mount($color = null )
     {
+        
         if ($color != null) {
             $this->color = $color;
         }
@@ -34,6 +36,19 @@ class AllArticles extends Component
         }
     
     }
+     
+    public function updatedMyInputDiv($myInputDiv){
+
+        $this->myInputDiv =$myInputDiv;
+    }
+
+
+      public function removePhoto($index)
+     {
+         # code...
+
+          array_splice($this->photos ,$index, 1);
+     }
     public function render()
     {
         return view('livewire.articles.all-articles');

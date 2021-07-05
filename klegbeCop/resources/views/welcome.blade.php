@@ -18,14 +18,13 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix('css/coustom.css') }}">
-   
+
     <script src="{{ mix('js/app.js') }}" defer></script>
-    
-    
+
+
     <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
     <style>
-    
-        html body{
+        html body {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -94,8 +93,7 @@
 
                 <ul class="list-reset lg:flex justify-end flex-1 items-center toggleColour text-white" id="navAction">
                     <li class="mr-3">
-                        <a class="inline-block py-2 px-4  font-bold no-underline" href="/"
-                            :active="true">Active</a>
+                        <a class="inline-block py-2 px-4  font-bold no-underline" href="/" :active="true">Active</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
@@ -106,8 +104,7 @@
                             href="#title" :active="link2">link2</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block py-2 px-4  font-bold no-underline" href="/"
-                            :active="true">categorie</a>
+                        <a class="inline-block py-2 px-4  font-bold no-underline" href="/" :active="true">categorie</a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
@@ -117,53 +114,53 @@
                         <a class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
                             href="#title" :active="link2"><i class="fas fa-cart-arrow-down mr-1"></i>Panier</a>
                     </li>
-                    <li class="mr-3  dropdown"   >
-                        <button onclick="myFunction()" class="dropbtn no-underline focus:outline-none focus:border-transparent  appearance-none leading-normal hover:text-gray-800 hover:text-underline py-2 px-4"><i class="far fa-user mr-1"></i>Compte et liste</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        @if (Route::has('login'))
+                    <li class="mr-3  dropdown">
+                        <button onclick="myFunction()"
+                            class="dropbtn block no-underline focus:outline-none focus:border-transparent  appearance-none leading-normal hover:text-gray-800 hover:text-underline py-2 px-4"><i
+                                class="far fa-user mr-1"></i>Compte et liste</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            @if (Route::has('login'))
 
-                        @auth
-                            <a href="{{ url('/dashboard') }}"
-                                class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Dashboard</a>
-                        @else
-                            <a href="{{ route('login') }}" :active="true"
-                                class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Log
-                                in</a>
+                                @auth
+                                    <a href="{{ url('/dashboard') }}"
+                                        class="inline-block  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Dashboard</a>
+                                @else
+                                    <a href="{{ route('login') }}" :active="true"
+                                        class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Log
+                                        in</a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" :active="true"
-                                    class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Register</a>
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}" :active="true"
+                                            class="  no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Register</a>
+                                    @endif
+                                @endauth
+
                             @endif
-                        @endauth
-
-                    @endif
-                    </div>
+                        </div>
                     </li>
                 </ul>
-                
-<script>
-    
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-  }
-  
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-  }
-        
-</script>
+
+                <script>
+                    /* When the user clicks on the button,
+                toggle between hiding and showing the dropdown content */
+                    function myFunction() {
+                        document.getElementById("myDropdown").classList.toggle("show");
+                    }
+
+                    // Close the dropdown menu if the user clicks outside of it
+                    window.onclick = function(event) {
+                        if (!event.target.matches('.dropbtn')) {
+                            var dropdowns = document.getElementsByClassName("dropdown-content");
+                            var i;
+                            for (i = 0; i < dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                if (openDropdown.classList.contains('show')) {
+                                    openDropdown.classList.remove('show');
+                                }
+                            }
+                        }
+                    }
+                </script>
                 {{-- <button
             id="navAction"
             class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
@@ -173,7 +170,7 @@ function myFunction() {
             </div>
         </div>
 
-       
+
         {{-- serach bar --}}
 
         <div class="relative w-full hidden  bg-white  shadow-2xl ring-1 border-t  border-collapse border-gray-400"
@@ -185,15 +182,15 @@ function myFunction() {
             <script type="text/javascript">
                 var selectInput = document.getElementById('search-toggle')
                 var mysearch = document.getElementById('search-content')
-                var searchfield =document.getElementById('searchfield')
+                var searchfield = document.getElementById('searchfield')
 
                 function checksearch() {
 
                     if (selectInput) {
 
                         if (mysearch.classList.contains("hidden")) {
-                            searchfield.style.border="none"
-                            searchfield.style.webkitAppearance="none"
+                            searchfield.style.border = "none"
+                            searchfield.style.webkitAppearance = "none"
                             mysearch.classList.remove("hidden")
                         } else
                             mysearch.classList.add("hidden")
@@ -202,18 +199,17 @@ function myFunction() {
 
 
                 }
-
             </script>
 
 
         </div>
         <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
-      
+
     </nav>
-   
+
     {{-- @yield('header') --}}
-    
-   
+
+
     <!--Hero-->
     <div class="pt-24 right-0 left-0">
 
@@ -232,7 +228,7 @@ function myFunction() {
                     Subscribe
                 </button>
             </div> --}}
-           
+
             <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center"
                 id="large-modal-id">
                 <div class="relative w-auto my-6 mx-auto max-w-6xl">
@@ -264,7 +260,7 @@ function myFunction() {
                                 won’t do anything. I was taught I could do everything.
                             </p>
                         </div>
-                        
+
                         <!--footer-->
                         <div
                             class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -290,15 +286,14 @@ function myFunction() {
                     document.getElementById(modalID).classList.toggle("flex");
                     document.getElementById(modalID + "-backdrop").classList.toggle("flex");
                 }
-
             </script>
- 
+
             <!--Right Col-->
 
         </div>
         <div class="my-12   contents bg-cover ">
             <img class="w-full h-1/6" src=" images/coding.jpg" alt="" style="height:600px">
-         </div>
+        </div>
     </div>
     {{-- <div class="relative -mt-12 lg:-mt-24">
 
@@ -306,21 +301,21 @@ function myFunction() {
     </div> --}}
     {{-- section articles --}}
     <section class="bg-white border-b py-8  mx-auto ">
-        
+
         <div class="container mx-auto items-center">
             <div class="flex justify-evenly  items-center m-2">
                 <button
-                class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                type="button" onclick="toggleModal('large-modal-id')">
-                Open large modal
-            </button> 
+                    class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button" onclick="toggleModal('large-modal-id')">
+                    Open large modal
+                </button>
             </div>
-           
+
             <div class="flex flex-wrap items-center justify-evenly">
 
-             <x-forms.input name type=' IdeaPad-3i-Ordinateur-Portable-17.3' label marque='Lenovo' ></x-forms.input>
-             
-               
+                <x-forms.input name type=' IdeaPad-3i-Ordinateur-Portable-17.3' label marque='Lenovo'></x-forms.input>
+
+
             </div>
         </div>
     </section>
@@ -568,7 +563,7 @@ function myFunction() {
         <div class="container mx-auto px-6">
             <div class="w-full flex flex-col md:flex-row py-6">
                 <div class="flex-1 mb-6 text-gray-800 ">
-           
+
                     <a class="text-pink-600 no-underline hover:no-underline font-bold  text-2xl lg:text-4xl" href="/">
                         <svg class="h-12 fill-current inline" viewBox="0 0 61 34" xmlns="http://www.w3.org/2000/svg">
                             <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502"
@@ -657,102 +652,100 @@ function myFunction() {
                 </div>
             </div>
         </div>
-       
+
     </footer>
     <script>
         var scrollpos = window.scrollY;
         var header = document.getElementById("header");
         var navcontent = document.getElementById("nav-content");
-       
+
         var navaction = document.getElementById("navAction");
         var brandname = document.getElementById("brandname");
         var toToggle = document.querySelectorAll(".toggleColour");
-  
-        document.addEventListener("scroll", function () {
-          /*Apply classes for slide in bar*/
-          scrollpos = window.scrollY;
-  
-          if (scrollpos > 10) {
-            header.classList.add("bg-white");
-            // navaction.classList.remove("bg-white");
-            // navaction.classList.add("gradient");
-            // navaction.classList.remove("text-gray-800");
-            // navaction.classList.add("text-white");
-          
-            //Use to switch toggleColour colours
-            for (var i = 0; i < toToggle.length; i++) {
-              toToggle[i].classList.add("text-gray-800");
-              toToggle[i].classList.remove("text-white");
+
+        document.addEventListener("scroll", function() {
+            /*Apply classes for slide in bar*/
+            scrollpos = window.scrollY;
+
+            if (scrollpos > 10) {
+                header.classList.add("bg-white");
+                // navaction.classList.remove("bg-white");
+                // navaction.classList.add("gradient");
+                // navaction.classList.remove("text-gray-800");
+                // navaction.classList.add("text-white");
+
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-gray-800");
+                    toToggle[i].classList.remove("text-white");
+                }
+                header.classList.add("shadow");
+
+                navcontent.classList.remove("bg-gray-100");
+                navcontent.classList.add("bg-white");
+
+            } else {
+                header.classList.remove("bg-white");
+
+                // navaction.classList.remove("gradient");
+                // navaction.classList.add("bg-white");
+                // navaction.classList.remove("text-white");
+                // navaction.classList.add("text-gray-800");
+                //Use to switch toggleColour colours
+                for (var i = 0; i < toToggle.length; i++) {
+                    toToggle[i].classList.add("text-white");
+                    toToggle[i].classList.remove("text-gray-800");
+                }
+
+                header.classList.remove("shadow");
+
+                navcontent.classList.remove("bg-white");
+                navcontent.classList.add("bg-gray-100");
             }
-            header.classList.add("shadow");
-          
-            navcontent.classList.remove("bg-gray-100");
-            navcontent.classList.add("bg-white");
-          
-          } else {
-            header.classList.remove("bg-white");
-           
-            // navaction.classList.remove("gradient");
-            // navaction.classList.add("bg-white");
-            // navaction.classList.remove("text-white");
-            // navaction.classList.add("text-gray-800");
-            //Use to switch toggleColour colours
-            for (var i = 0; i < toToggle.length; i++) {
-              toToggle[i].classList.add("text-white");
-              toToggle[i].classList.remove("text-gray-800");
-            }
-  
-            header.classList.remove("shadow");
-           
-            navcontent.classList.remove("bg-white");
-            navcontent.classList.add("bg-gray-100");
-          }
         });
-      </script>
-      <script>
+    </script>
+    <script>
         /*Toggle dropdown list*/
         /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-  
+
         var navMenuDiv = document.getElementById("nav-content");
         var navMenu = document.getElementById("nav-toggle");
-  
+
         document.onclick = check;
+
         function check(e) {
-          var target = (e && e.target) || (event && event.srcElement);
-  
-          //Nav Menu
-          if (!checkParent(target, navMenuDiv)) {
-            // click NOT on the menu
-            if (checkParent(target, navMenu)) {
-              // click on the link
-              if (navMenuDiv.classList.contains("hidden")) {
-                navMenuDiv.classList.remove("hidden");
-              } else {
-                navMenuDiv.classList.add("hidden");
-              }
-            } else {
-              // click both outside link and outside menu, hide menu
-              navMenuDiv.classList.add("hidden");
+            var target = (e && e.target) || (event && event.srcElement);
+
+            //Nav Menu
+            if (!checkParent(target, navMenuDiv)) {
+                // click NOT on the menu
+                if (checkParent(target, navMenu)) {
+                    // click on the link
+                    if (navMenuDiv.classList.contains("hidden")) {
+                        navMenuDiv.classList.remove("hidden");
+                    } else {
+                        navMenuDiv.classList.add("hidden");
+                    }
+                } else {
+                    // click both outside link and outside menu, hide menu
+                    navMenuDiv.classList.add("hidden");
+                }
             }
-          }
         }
+
         function checkParent(t, elm) {
-          while (t.parentNode) {
-            if (t == elm) {
-              return true;
+            while (t.parentNode) {
+                if (t == elm) {
+                    return true;
+                }
+                t = t.parentNode;
             }
-            t = t.parentNode;
-          }
-          return false;
+            return false;
         }
-      </script>
+    </script>
     @stack('modals')
 
     @livewireScripts
 </body>
 
 </html>
-
-
-
-

@@ -96,16 +96,18 @@ function addElem(e) {
 
 }
  
-var clikdiv = document.getElementById('imageUpload'+i)
-if (clikdiv !=null) {
 
-  clikdiv.forEach(element => {
-    console.log(element)
-   element.onclick = clickmydiv
+
+console.log(imageUpload)
+if (imageUpload !=null) {
+
+
+  imageUpload.onclick = clickmydiv
    function clickmydiv(){
-    document.getElementById('x-ref'+i).click()
+    
+    myfre.click()
    }
- });
+
 
 }
 

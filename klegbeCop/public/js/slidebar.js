@@ -17343,17 +17343,14 @@ function addElem(e) {
   e.preventDefault();
 }
 
-var clikdiv = document.getElementById('imageUpload' + i);
+console.log(imageUpload);
 
-if (clikdiv != null) {
-  clikdiv.forEach(function (element) {
-    console.log(element);
-    element.onclick = clickmydiv;
+if (imageUpload != null) {
+  var clickmydiv = function clickmydiv() {
+    myfre.click();
+  };
 
-    function clickmydiv() {
-      document.getElementById('x-ref' + i).click();
-    }
-  });
+  imageUpload.onclick = clickmydiv;
 }
 /**
  * remove form input
